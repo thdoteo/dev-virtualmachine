@@ -66,8 +66,8 @@ apt-get -y install phpmyadmin
 # Install Apaxy
 rm -rf /var/www/apaxy/
 rm -f /var/www/.htaccess
-cp -r /vagrant/config/apaxy /var/www
-cp /vagrant/config/apaxy/htaccess-root /var/www/.htaccess
+git clone git@github.com:thdoteo/Apaxy.git /var/www
+rm -rf /var/www/.git
 
 # Restart Apache
 service apache2 restart
