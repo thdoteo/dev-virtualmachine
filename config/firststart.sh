@@ -38,7 +38,7 @@ curl -s https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 # Install MailDev
-apt-get install esmtp
+apt-get -y install esmtp
 echo "hostname=0.0.0.0:1025" > /etc/esmtprc
 ln -s /usr/bin/esmtp /usr/bin/sendmail
 npm install -g maildev
