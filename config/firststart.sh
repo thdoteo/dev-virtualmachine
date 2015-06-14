@@ -37,18 +37,16 @@ echo "date.timezone =" $timezone >> /etc/php5/apache2/php.ini
 curl -s https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
-# Install Mailcatcher
-# sudo apt-get install -y build-essential g++ libsqlite3-dev
-# gem install mailcatcher --no-ri --no-rdoc
-# mailcatcher --ip=0.0.0.0
-
 # Install MailDev
 apt-get install esmtp
 echo "hostname=0.0.0.0:1025" > /etc/esmtprc
 ln -s /usr/bin/esmtp /usr/bin/sendmail
 npm install -g maildev
 ln -s /usr/bin/nodejs /usr/bin/node
-maildev
+npm install -g forever
+npm install -g forever-service
+forever-service install maildev --script /usr/local/lib/node_modules/maildev/bin/maildev
+service maildev start
 
 # Install MySQL
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $password"
@@ -66,8 +64,10 @@ apt-get -y install phpmyadmin
 # Install Apaxy
 rm -rf /var/www/apaxy/
 rm -f /var/www/.htaccess
-git clone git@github.com:thdoteo/Apaxy.git /var/www
-rm -rf /var/www/.git
+git clone https://github.com/thdoteo/Apaxy.git /var/www/apaxy-temp
+mv /var/www/apaxy-temp/apaxy /var/www/apaxy
+mv /var/www/apaxy-temp/.htaccess /var/www/.htaccess
+rm -rf /var/www/apaxy-temp/
 
 # Restart Apache
 service apache2 restart

@@ -1,8 +1,7 @@
 #!/bin/bash
 
 service apache2 start
-#mailcatcher --ip=0.0.0.0
-maildev
+service maildev start
 
 echo -e "\n*********"
 echo "Vagrant machine '$1' successfully started !"
