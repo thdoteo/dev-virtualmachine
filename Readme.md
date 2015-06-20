@@ -1,6 +1,6 @@
 ##Webdev-VirtualMachine
 
-A vagrant virtual machine to start developing faster !
+A vagrant virtual machine to start developing faster !  
 You can see also : [thdoteo/webdev-boilerplate-project](https://github.com/thdoteo/webdev-boilerplate-project).
 
 ###Features
