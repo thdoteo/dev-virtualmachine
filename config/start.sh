@@ -3,10 +3,9 @@
 service apache2 start
 service maildev start
 
-echo -e "\n*********"
-echo "Vagrant machine '$1' successfully started !"
-echo "You can open your web browser on 'http://$3' (ip:$2) which is linked to '$5'."
-echo "The password for root, mysql, etc.. is what you have set in the Vagrantfile."
-echo "Go to 'http://$3/phpmyadmin' to use PhpMyAdmin."
-echo "For more informations go to 'http://github.com/thdoteo/simple-dev-vm'."
-echo "*********"
+echo -e "\n"
+echo "****************"
+echo "Hurrah! Virtual machine '$1' successfully started!"
+echo "'$3' = $2, apache linked to '$4', phpmyadmin 'http://$3/phpmyadmin', maildev 'http://$3:1080'"
+echo "Settings are in the Vagrantfile. For more informations go to 'http://github.com/thdoteo/dev-vm'."
+echo "****************"

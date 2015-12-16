@@ -5,7 +5,7 @@ name = "dev"
 ip = "222.222.2.2"
 hostname = "dev"
 password = "root"
-webpath = "D:/dev"
+apachesyncfolder = "D:/dev"
 timezone = "Europe/Paris"
 
 Vagrant.configure(2) do |config|
@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
 
-  config.vm.synced_folder webpath, "/var/www", create: true
+  config.vm.synced_folder apachesyncfolder, "/var/www", create: true
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
@@ -26,7 +26,7 @@ Vagrant.configure(2) do |config|
     vb.memory = "1024"
   end
 
-  config.vm.provision "shell", path: "config/firststart.sh", args: [name, ip, hostname, password, webpath, timezone]
-  config.vm.provision "shell", run: "always", path: "config/start.sh", args: [name, ip, hostname, password, webpath]
+  config.vm.provision "shell", path: "config/firststart.sh", args: [password, timezone]
+  config.vm.provision "shell", run: "always", path: "config/start.sh", args: [name, ip, hostname, apachesyncfolder]
 
 end

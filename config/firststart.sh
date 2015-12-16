@@ -1,27 +1,28 @@
 #!/bin/bash
 
-password=$4
-timezone=$6
+password=$1
+timezone=$2
 
 # Set up Debian
 echo -e "$password\n$password" | passwd
-echo deb http://ftp.us.debian.org/debian/ sid main \ > /etc/apt/sources.list.d/sid.list
-apt-get update
-DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 echo $timezone > /etc/timezone
 dpkg-reconfigure --frontend noninteractive tzdata
+apt-get update
+APT_LISTCHANGES_FRONTEND=none DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 
-# Install git, vim, nodejs, npm
-apt-get -y install git vim nodejs npm
+# Install git, vim, nodejs, npm, build-essential
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+apt-get -y install git vim nodejs build-essential
+ln -s /usr/bin/nodejs /usr/bin/node
 
 # Install Apache
 apt-get -y install apache2 libapache2-mod-python
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
-cp /vagrant/config/apache2_vhost /etc/apache2/sites-available/000-default.conf
+cp /vagrant/config/apache2_vhost /etc/apache2/sites-available/default
 a2enmod rewrite
 mkdir /vagrant/logs
 touch /vagrant/logs/apache.log
-rm -rf /var/www/html
+rm -rf /var/www/index.html
 
 # Install PHP
 sudo apt-get install -y php5 php5-xdebug php5-gd php5-mcrypt php5-curl php5-imap
@@ -31,7 +32,7 @@ sed -i '/error_reporting = E_ALL & ~E_DEPRECATED/c error_reporting = E_ALL | E_S
 sed -i '/html_errors = Off/c html_errors = On' /etc/php5/apache2/php.ini
 echo "zend_extension = /usr/local/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so" >> /etc/php5/apache2/php.ini
 echo "date.timezone =" $timezone >> /etc/php5/apache2/php.ini
-#echo "error_log = /vagrant/php.log" >> /etc/php5/apache2/php.ini
+echo "error_log = /vagrant/logs/php.log" >> /etc/php5/apache2/php.ini
 
 # Install Composer
 curl -s https://getcomposer.org/installer | php
@@ -42,10 +43,9 @@ apt-get -y install esmtp
 echo "hostname=0.0.0.0:1025" > /etc/esmtprc
 ln -s /usr/bin/esmtp /usr/bin/sendmail
 npm install -g maildev
-ln -s /usr/bin/nodejs /usr/bin/node
 npm install -g forever
 npm install -g forever-service
-forever-service install maildev --script /usr/local/lib/node_modules/maildev/bin/maildev
+forever-service install maildev --script /usr/lib/node_modules/maildev/bin/maildev
 service maildev start
 
 # Install MySQL
