@@ -3,6 +3,7 @@
     DocumentRoot /var/www
 
     <Directory /var/www>
+        EnableSendfile off
         Options +Indexes +FollowSymLinks -MultiViews
         AllowOverride All
         AddHandler mod_python .py

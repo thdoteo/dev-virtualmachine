@@ -5,7 +5,7 @@ name = "dev"
 ip = "222.222.2.2"
 hostname = "dev"
 password = "root"
-apachesyncfolder = "D:/dev"
+apachesyncfolder = "D:/Workspaces/dev-virtualmachine"
 timezone = "Europe/Paris"
 
 Vagrant.configure(2) do |config|
