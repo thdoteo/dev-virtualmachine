@@ -47,3 +47,7 @@ Follow the instructions written on your terminal. You can now access your virtua
 To shutdown your virtual machine type this :
 
 	$ vagrant halt
+
+###Contribute
+
+Don't hesitate to improve the code and ask for a pull request, even small ones. I would be delighted to see other people taking part in this project :-).
