@@ -1,6 +1,6 @@
 ##webDevelopmentVirtualmachine
 
-A Vagrant Virtualmachine that I use to develop mainly with web technologies
+A Vagrant Virtual machine that I use to develop with web technologies.
 
 ###Features
 
