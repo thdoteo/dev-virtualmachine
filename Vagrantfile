@@ -1,11 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-name = "dev"
+name = "webDevelopmentVirtualmachine"
 ip = "222.222.2.2"
-hostname = "dev"
+hostname = "webDevelopmentVirtualmachine"
 password = "root"
-apachesyncfolder = "D:/Workspaces/dev-virtualmachine"
+apachefolder = "D:/Workspaces/www"
 timezone = "Europe/Paris"
 
 Vagrant.configure(2) do |config|
@@ -18,15 +18,15 @@ Vagrant.configure(2) do |config|
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
 
-  config.vm.synced_folder apachesyncfolder, "/var/www", create: true
+  config.vm.synced_folder apachefolder, "/var/www", create: true
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.name = name
-    vb.memory = "1024"
+    vb.memory = "512"
   end
 
   config.vm.provision "shell", path: "config/firststart.sh", args: [password, timezone]
-  config.vm.provision "shell", run: "always", path: "config/start.sh", args: [name, ip, hostname, apachesyncfolder]
+  config.vm.provision "shell", run: "always", path: "config/start.sh", args: [name, ip, hostname, apachefolder]
 
 end
