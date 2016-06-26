@@ -3,7 +3,7 @@
 
 name = "webDevelopmentVirtualmachine"
 ip = "222.222.2.2"
-hostname = "webDevelopmentVirtualmachine"
+hostname = "dev"
 password = "root"
 apachefolder = "D:/Workspaces/www"
 timezone = "Europe/Paris"

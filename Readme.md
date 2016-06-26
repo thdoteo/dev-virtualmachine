@@ -40,10 +40,10 @@ You can change the configuration (name, ip, timezone, apachefolder...) at the to
 
 **6 - Wait for a loooonnnnng time.**
 	
-Follow the instruction written on your terminal. You can now access your virtual machine via ssh with :
+Follow the instructions written on your terminal. You can now access your virtual machine via SSH with :
 
 	$ vagrant ssh
 
-To shutdown it type this :
+To shutdown your virtual machine type this :
 
 	$ vagrant halt
