@@ -11,7 +11,7 @@ timezone = "Europe/Paris"
 Vagrant.configure(2) do |config|
 
   config.vm.box = name
-  config.vm.box_url = "https://dl.dropboxusercontent.com/u/197673519/debian-7.2.0.box"
+  config.vm.box_url = "https://github.com/holms/vagrant-jessie-box/releases/download/Jessie-v0.1/Debian-jessie-amd64-netboot.box"
   config.vm.hostname = hostname
   config.vm.network "private_network", ip: ip
 

@@ -18,14 +18,14 @@ ln -s /usr/bin/nodejs /usr/bin/node
 # Install Apache
 apt-get -y install apache2 libapache2-mod-python
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
-cp /vagrant/config/apache2_vhost /etc/apache2/sites-available/default
+cp /vagrant/config/apache2_vhost /etc/apache2/sites-available/000-default.conf
 a2enmod rewrite
 mkdir /vagrant/logs
 touch /vagrant/logs/apache.log
-rm -rf /var/www/index.html
+rm -rf /var/www/html
 
 # Install PHP
-sudo apt-get install -y php5 php5-xdebug php5-gd php5-mcrypt php5-curl php5-imap
+sudo apt-get install -y php5-common libapache2-mod-php5 php5-cli php5-xdebug php5-gd php5-mcrypt php5-curl php5-imap
 sed -i '/;sendmail_path =/c sendmail_path = "/usr/bin/sendmail -t -i"' /etc/php5/apache2/php.ini
 sed -i '/display_errors = Off/c display_errors = On' /etc/php5/apache2/php.ini
 sed -i '/error_reporting = E_ALL & ~E_DEPRECATED/c error_reporting = E_ALL | E_STRICT' /etc/php5/apache2/php.ini
