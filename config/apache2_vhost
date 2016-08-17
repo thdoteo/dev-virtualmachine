@@ -6,9 +6,6 @@
         EnableSendfile off
         Options +Indexes +FollowSymLinks -MultiViews
         AllowOverride All
-        AddHandler mod_python .py
-        PythonHandler mod_python.publisher
-        PythonDebug On
     </Directory>
 
     ErrorLog /vagrant/logs/apache.log

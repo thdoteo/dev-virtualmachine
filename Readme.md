@@ -7,7 +7,6 @@ A Vagrant Virtual machine that I use to develop with web technologies.
 - Debian 7.2
 - Apache2 (synced to a folder of the host machine)
 - PHP5 with xdebug, composer, curl, gd, imap, mcrypt
-- Python (.py files can be run through Apache)
 - vim, nodejs, npm, git, ruby
 - MailDev
 - MySQL and PhpMyAdmin
