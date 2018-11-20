@@ -1,8 +1,8 @@
-##webDevelopmentVirtualmachine
+## vagrant-webdev
 
-A Vagrant Virtual machine that I use to develop with web technologies.
+A vagrant VM to develop with web technologies (PHP, MySQL).
 
-###Features
+### Features
 
 - Debian 7.2
 - Apache2 (synced to a folder of the host machine)
@@ -13,9 +13,9 @@ A Vagrant Virtual machine that I use to develop with web technologies.
 - Beautiful listing directory with Apaxy 
 - Modular configuration (at the top of the *Vagrantfile*)
 
-###Usage
+### Usage
 
-First you need Git (obviously), Virtualbox and Vagrant.
+First, you need Git (obviously), Virtualbox and Vagrant.
 
 **1 - Open your terminal and clone this repository.**
 
@@ -46,7 +46,3 @@ Follow the instructions written on your terminal. You can now access your virtua
 To shutdown your virtual machine type this :
 
 	$ vagrant halt
-
-###Contribute
-
-Don't hesitate to improve the code and ask for a pull request, even small ones. I would be delighted to see other people taking part in this project :-).

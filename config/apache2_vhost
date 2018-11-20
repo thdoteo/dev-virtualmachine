@@ -9,6 +9,7 @@
     </Directory>
 
     ErrorLog /vagrant/logs/apache.log
+    LogLevel debug
 
     Include "/etc/phpmyadmin/apache.conf"
 </VirtualHost>
