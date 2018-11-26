@@ -1,8 +1,8 @@
-## vagrant-webdev
+# vagrant-webdev
 
 A vagrant VM to develop with web technologies (PHP, MySQL).
 
-### Features
+## Features
 
 - Debian 7.2
 - Apache2 (synced to a folder of the host machine)
@@ -13,7 +13,7 @@ A vagrant VM to develop with web technologies (PHP, MySQL).
 - Beautiful listing directory with Apaxy 
 - Modular configuration (at the top of the *Vagrantfile*)
 
-### Usage
+## Usage
 
 First, you need Git (obviously), Virtualbox and Vagrant.
 
